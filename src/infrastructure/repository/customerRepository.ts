@@ -1,10 +1,27 @@
 import Address from "../../domain/entities/address";
 import Customer from "../../domain/entities/customer";
+import BeforeCustomerIsCreated from "../../domain/event/@shared/customer/beforeCustomerIsCreatedHandler";
+import CustomerCreatedEvent from "../../domain/event/@shared/customer/customerCreatedEvent";
+import CustomerCreatedHandler from "../../domain/event/@shared/customer/customerCreatedHandler";
+import EventDispatcher from "../../domain/event/@shared/eventDispatcher";
+import IEventDispatcher from "../../domain/event/@shared/IEventDispatcher";
 import ICustomerRepository from "../../domain/repository/ICustomerRepository";
 import { CustomerNotFoundError } from "../../errors/errors";
 import CustomerModel from "../db/sequelize/model/customer.model";
 
 class CustomerRepository implements ICustomerRepository {
+  private eventDispatcher: IEventDispatcher;
+
+  constructor() {
+    this.eventDispatcher = new EventDispatcher();
+
+    const createHandler = new CustomerCreatedHandler();
+    const beforeCreateHandler = new BeforeCustomerIsCreated();
+    const eventName = 'CustomerCreated';
+
+    this.eventDispatcher.register(eventName, createHandler);
+    this.eventDispatcher.register(eventName, beforeCreateHandler);
+  }
   async create(entity: Customer): Promise<void> {
     await CustomerModel.create({
       id: entity.id,
@@ -17,6 +34,10 @@ class CustomerRepository implements ICustomerRepository {
       zipCode: entity.address.zipCode,
       rewardPoints: entity.rewardPoints,
     });
+
+
+    const event = new CustomerCreatedEvent('CustomerCreated');
+    this.eventDispatcher.notify(event);
   }
 
   async update(entity: Customer): Promise<void> {
