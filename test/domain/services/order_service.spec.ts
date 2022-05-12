@@ -1,10 +1,10 @@
-import Address from "../../../src/domain/entities/address";
-import Customer from "../../../src/domain/entities/customer";
-import Order from "../../../src/domain/entities/order";
-import OrderItem from "../../../src/domain/entities/orderItem";
-import OrderService from "../../../src/domain/services/order_service";
+import Address from "../../../src/domain/customer/entity/address";
+import Customer from "../../../src/domain/customer/entity/customer";
+import Order from "../../../src/domain/checkout/entity/order";
+import OrderItem from "../../../src/domain/checkout/entity/orderItem";
+import OrderService from "../../../src/domain/checkout/service/order_service";
 
-import { ParameterValueError } from "../../../src/errors/errors";
+import { ParameterValueError } from "../../../src/domain/@shared/errors/errors";
 
 describe("OrderService test cases", () => {
   it("should get total orders", () => {

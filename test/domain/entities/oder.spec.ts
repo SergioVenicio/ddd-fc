@@ -1,7 +1,7 @@
-import Order from "../../../src/domain/entities/order";
-import OrderItem from "../../../src/domain/entities/orderItem";
-import Product from "../../../src/domain/entities/product";
-import { RequiredParametersError } from "../../../src/errors/errors";
+import Order from "../../../src/domain/checkout/entity/order";
+import OrderItem from "../../../src/domain/checkout/entity/orderItem";
+import Product from "../../../src/domain/product/entity/product";
+import { RequiredParametersError } from "../../../src/domain/@shared/errors/errors";
 
 describe('Order test cases', () => {
   it("should create new OrderItem", () => {

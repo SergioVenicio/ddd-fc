@@ -1,7 +1,7 @@
-import Product from "../../../src/domain/entities/product";
-import ProductService from "../../../src/domain/services/product_service";
+import Product from "../../../src/domain/product/entity/product";
+import ProductService from "../../../src/domain/product/service/product_service";
 
-import { ParameterValueError } from "../../../src/errors/errors";
+import { ParameterValueError } from "../../../src/domain/@shared/errors/errors";
 
 describe("ProductService test cases", () => {
   it("should change the prices off all products", () => {

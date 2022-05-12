@@ -1,10 +1,10 @@
 import { Sequelize } from "sequelize-typescript";
 
-import ProductRepository from "../../../src/infrastructure/repository/productRepository";
+import ProductRepository from "../../../src/infrastructure/product/repository/sequelize/productRepository";
 
-import ProductModel from "../../../src/infrastructure/db/sequelize/model/product.model";
-import Product from "../../../src/domain/entities/product";
-import { ProductNotFoundError } from "../../../src/errors/errors";
+import ProductModel from "../../../src/infrastructure/product/repository/sequelize/product.model";
+import Product from "../../../src/domain/product/entity/product";
+import { ProductNotFoundError } from "../../../src/domain/@shared/errors/errors";
 
 describe("ProductRepository test cases", () => {
   let squeleze: Sequelize;

@@ -1,6 +1,6 @@
-import Address from "../../../src/domain/entities/address";
-import Customer from "../../../src/domain/entities/customer";
-import { RequiredParametersError } from "../../../src/errors/errors";
+import Address from "../../../src/domain/customer/entity/address";
+import Customer from "../../../src/domain/customer/entity/customer";
+import { RequiredParametersError } from "../../../src/domain/@shared/errors/errors";
 
 describe('Customer test cases', () => {
   it("should create new Address", () => {

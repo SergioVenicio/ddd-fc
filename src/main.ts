@@ -1,8 +1,8 @@
-import Customer from "./domain/entities/customer";
-import Address from "./domain/entities/address";
+import Customer from "./domain/customer/entity/customer";
+import Address from "./domain/customer/entity/address";
 
-import OrderItem from "./domain/entities/orderItem";
-import Order from "./domain/entities/order";
+import OrderItem from "./domain/checkout/entity/orderItem";
+import Order from "./domain/checkout/entity/order";
 
 
 const customerAddress = new Address("Main street", 123, "New York", "NY", "123");

@@ -1,10 +1,10 @@
 import { Sequelize } from "sequelize-typescript";
-import Address from "../../../src/domain/entities/address";
-import Customer from "../../../src/domain/entities/customer";
-import { CustomerNotFoundError } from "../../../src/errors/errors";
-import CustomerModel from "../../../src/infrastructure/db/sequelize/model/customer.model";
+import Address from "../../../src/domain/customer/entity/address";
+import Customer from "../../../src/domain/customer/entity/customer";
+import { CustomerNotFoundError } from "../../../src/domain/@shared/errors/errors";
+import CustomerModel from "../../../src/infrastructure/customer/repository/sequelize/customer.model";
 
-import CustomerRepository from "../../../src/infrastructure/repository/customerRepository";
+import CustomerRepository from "../../../src/infrastructure/customer/repository/sequelize/customerRepository";
 
 describe("ProductRepository test cases", () => {
   let squeleze: Sequelize;

@@ -1,18 +1,18 @@
 import { Sequelize } from "sequelize-typescript";
-import Address from "../../../src/domain/entities/address";
-import Customer from "../../../src/domain/entities/customer";
-import Order from "../../../src/domain/entities/order";
-import OrderItem from "../../../src/domain/entities/orderItem";
-import Product from "../../../src/domain/entities/product";
-import { OrderNotFoundError } from "../../../src/errors/errors";
+import Address from "../../../src/domain/customer/entity/address";
+import Customer from "../../../src/domain/customer/entity/customer";
+import Order from "../../../src/domain/checkout/entity/order";
+import OrderItem from "../../../src/domain/checkout/entity/orderItem";
+import Product from "../../../src/domain/product/entity/product";
+import { OrderNotFoundError } from "../../../src/domain/@shared/errors/errors";
 
-import CustomerModel from "../../../src/infrastructure/db/sequelize/model/customer.model";
-import OrderModel from "../../../src/infrastructure/db/sequelize/model/order.model";
-import OrderItemModel from "../../../src/infrastructure/db/sequelize/model/orderItem.model";
-import ProductModel from "../../../src/infrastructure/db/sequelize/model/product.model";
-import CustomerRepository from "../../../src/infrastructure/repository/customerRepository";
-import OrderRepository from "../../../src/infrastructure/repository/orderRepository";
-import ProductRepository from "../../../src/infrastructure/repository/productRepository";
+import CustomerModel from "../../../src/infrastructure/customer/repository/sequelize/customer.model";
+import OrderModel from "../../../src/infrastructure/order/repository/sequelize/order.model";
+import OrderItemModel from "../../../src/infrastructure/order/repository/sequelize/orderItem.model";
+import ProductModel from "../../../src/infrastructure/product/repository/sequelize/product.model";
+import CustomerRepository from "../../../src/infrastructure/customer/repository/sequelize/customerRepository";
+import OrderRepository from "../../../src/infrastructure/order/repository/sequelize/orderRepository";
+import ProductRepository from "../../../src/infrastructure/product/repository/sequelize/productRepository";
 
 describe("OrderRepository test cases", () => {
   let squeleze: Sequelize;

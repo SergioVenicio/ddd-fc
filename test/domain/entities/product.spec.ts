@@ -1,5 +1,5 @@
-import Product from "../../../src/domain/entities/product";
-import { PriceError, RequiredParametersError } from "../../../src/errors/errors";
+import Product from "../../../src/domain/product/entity/product";
+import { PriceError, RequiredParametersError } from "../../../src/domain/@shared/errors/errors";
 
 describe('Product test cases', () => {
   it("should not create Product without required fields",  () => {

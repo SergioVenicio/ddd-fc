@@ -1,7 +1,7 @@
-import BeforeCustomerIsCreated from "../../src/domain/event/@shared/customer/beforeCustomerIsCreatedHandler";
-import CustomerCreatedEvent from "../../src/domain/event/@shared/customer/customerCreatedEvent";
-import CustomerCreatedHandler from "../../src/domain/event/@shared/customer/customerCreatedHandler";
-import EventDispatcher from "../../src/domain/event/@shared/eventDispatcher";
+import BeforeCustomerIsCreated from "../../src/domain/customer/events/beforeCustomerIsCreatedHandler";
+import CustomerCreatedEvent from "../../src/domain/customer/events/customerCreatedEvent";
+import CustomerCreatedHandler from "../../src/domain/customer/events/customerCreatedHandler";
+import EventDispatcher from "../../src/domain/@shared/event/eventDispatcher";
 
 describe('Customer event test cases', () => {
   it('should notify a new customer event', () => {
