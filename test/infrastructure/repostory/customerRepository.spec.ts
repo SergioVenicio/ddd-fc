@@ -5,6 +5,7 @@ import { CustomerNotFoundError } from "../../../src/domain/@shared/errors/errors
 import CustomerModel from "../../../src/infrastructure/customer/repository/sequelize/customer.model";
 
 import CustomerRepository from "../../../src/infrastructure/customer/repository/sequelize/customerRepository";
+import Logger from "../../../src/domain/@shared/logger/Logger";
 
 describe("ProductRepository test cases", () => {
   let squeleze: Sequelize;
@@ -26,7 +27,12 @@ describe("ProductRepository test cases", () => {
   });
 
   it("should create a customer", async () => {
-    const customerRepository = new CustomerRepository();
+    const logger = {
+      info: jest.fn(),
+      warn: jest.fn(),
+      error: jest.fn(),
+    };
+    const customerRepository = new CustomerRepository(logger);
     const address =  new Address("str 1", 123, "test", "TST", '123-321');
     const customer = new Customer("1", "test", address);
     await customerRepository.create(customer);
@@ -46,7 +52,12 @@ describe("ProductRepository test cases", () => {
   });
 
   it("should update a customer", async () => {
-    const customerRepository = new CustomerRepository();
+    const logger = {
+      info: jest.fn(),
+      warn: jest.fn(),
+      error: jest.fn(),
+    };
+    const customerRepository = new CustomerRepository(logger);
     const address =  new Address("str 2", 123, "test 2", "TST", '123-321');
     const customer = new Customer("1", "test", address);
     await customerRepository.create(customer);
@@ -70,7 +81,12 @@ describe("ProductRepository test cases", () => {
   });
 
   it("should find a customer by id", async () => {
-    const customerRepository = new CustomerRepository();
+    const logger = {
+      info: jest.fn(),
+      warn: jest.fn(),
+      error: jest.fn(),
+    };
+    const customerRepository = new CustomerRepository(logger);
     const address =  new Address("str 2", 123, "test 2", "TST", '123-321');
     const customer = new Customer("1", "test", address);
     await customerRepository.create(customer);
@@ -83,7 +99,12 @@ describe("ProductRepository test cases", () => {
   });
 
   it("should throws CustomerNotFound with a invalid id", async () => {
-    const customerRepository = new CustomerRepository();
+    const logger = {
+      info: jest.fn(),
+      warn: jest.fn(),
+      error: jest.fn(),
+    };
+    const customerRepository = new CustomerRepository(logger);
     const address =  new Address("str 2", 123, "test 2", "TST", '123-321');
     const customer = new Customer("1", "test", address);
     await customerRepository.create(customer);
@@ -92,7 +113,12 @@ describe("ProductRepository test cases", () => {
   });
 
   it("should find all customers", async () => {
-    const customerRepository = new CustomerRepository();
+    const logger = {
+      info: jest.fn(),
+      warn: jest.fn(),
+      error: jest.fn(),
+    };
+    const customerRepository = new CustomerRepository(logger);
     const address =  new Address("str 1", 123, "test 1", "TST", '123-321');
     const customer = new Customer("1", "test", address);
     await customerRepository.create(customer);

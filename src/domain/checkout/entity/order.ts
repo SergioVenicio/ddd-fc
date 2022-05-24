@@ -1,14 +1,16 @@
 import OrderItem from "./orderItem";
 
 import { RequiredParametersError } from "../../@shared/errors/errors";
+import IOrder from "./IOrder";
+import IOrderItem from "./IOrderItem";
 
 
-class Order {
+class Order implements IOrder {
   private readonly _id: string;
   private _customerId: string;
-  private _items: OrderItem[];
+  private _items: IOrderItem[];
 
-  constructor(id: string, customerId: string, items: OrderItem[]) {
+  constructor(id: string, customerId: string, items: IOrderItem[]) {
     this._id = String(id);
     this._customerId = String(customerId);
     this._items = [...items];
@@ -24,7 +26,7 @@ class Order {
     return String(this._customerId);
   }
 
-  public get items(): OrderItem[] {
+  public get items(): IOrderItem[] {
     return [...this._items];
   }
 

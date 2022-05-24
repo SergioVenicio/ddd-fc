@@ -20,7 +20,9 @@
     "ts-node": "^10.7.0"
   },
   "dependencies": {
+    "@types/pino": "^7.0.5",
     "@types/uuid": "^8.3.4",
+    "pino": "^7.11.0",
     "reflect-metadata": "^0.1.13",
     "sequelize": "^6.19.0",
     "sequelize-typescript": "^2.1.3",

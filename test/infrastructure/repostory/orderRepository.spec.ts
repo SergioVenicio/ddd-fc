@@ -13,6 +13,7 @@ import ProductModel from "../../../src/infrastructure/product/repository/sequeli
 import CustomerRepository from "../../../src/infrastructure/customer/repository/sequelize/customerRepository";
 import OrderRepository from "../../../src/infrastructure/order/repository/sequelize/orderRepository";
 import ProductRepository from "../../../src/infrastructure/product/repository/sequelize/productRepository";
+import Logger from "../../../src/domain/@shared/logger/Logger";
 
 describe("OrderRepository test cases", () => {
   let squeleze: Sequelize;
@@ -39,7 +40,12 @@ describe("OrderRepository test cases", () => {
   });
 
   it("should create a order", async () => {
-    const customerRepository = new CustomerRepository();
+    const logger = {
+      info: jest.fn(),
+      warn: jest.fn(),
+      error: jest.fn(),
+    };
+    const customerRepository = new CustomerRepository(logger);
     const address = new Address("Street 1", 1, "Zipcode 1", "City 1", "123-456");
     const customer = new Customer("1", "Customer 1", address);
     await customerRepository.create(customer);
@@ -83,7 +89,12 @@ describe("OrderRepository test cases", () => {
   });
 
   it("should update a order", async () => {
-    const customerRepository = new CustomerRepository();
+    const logger = {
+      info: jest.fn(),
+      warn: jest.fn(),
+      error: jest.fn(),
+    };
+    const customerRepository = new CustomerRepository(logger);
     const address = new Address('test', 123, 'test', 'TS', '1234-4321');
     const customer = new Customer('1', 'test', address);
     await customerRepository.create(customer);
@@ -134,7 +145,12 @@ describe("OrderRepository test cases", () => {
   });
 
   it("should find a order by id", async () => {
-    const customerRepository = new CustomerRepository();
+    const logger = {
+      info: jest.fn(),
+      warn: jest.fn(),
+      error: jest.fn(),
+    };
+    const customerRepository = new CustomerRepository(logger);
     const address = new Address('test', 123, 'test', 'TS', '1234-4321');
     const customer = new Customer('1', 'test', address);
     await customerRepository.create(customer);
@@ -160,7 +176,12 @@ describe("OrderRepository test cases", () => {
   });
 
   it("should find alll orders", async() => {
-    const customerRepository = new CustomerRepository();
+    const logger = {
+      info: jest.fn(),
+      warn: jest.fn(),
+      error: jest.fn(),
+    };
+    const customerRepository = new CustomerRepository(logger);
     const address = new Address("Street 1", 1, "Zipcode 1", "City 1", "123-456");
     const customer = new Customer("1", "Customer 1", address);
     await customerRepository.create(customer);

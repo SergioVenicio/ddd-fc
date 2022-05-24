@@ -2,11 +2,19 @@ import Product from "../../src/domain/product/entity/product";
 import EventDispatcher from "../../src/domain/@shared/event/eventDispatcher";
 import ProductCreatedEvent from "../../src/domain/product/event/productCreatedEvent";
 import SendEmailWhenProductIsCreatedHandler from "../../src/domain/product/event/sendEmailWhenProductIsCreatedHandler";
+import Logger from "../../src/domain/@shared/logger/Logger";
+
 
 describe('Domain event test cases', () => {
   it('should register a new event handler', () => {
-    const eventDispatcher = new EventDispatcher();
-    const eventHandler = new SendEmailWhenProductIsCreatedHandler();
+    const logger = {
+      info: jest.fn(),
+      warn: jest.fn(),
+      error: jest.fn(),
+    };
+
+    const eventDispatcher = new EventDispatcher(logger);
+    const eventHandler = new SendEmailWhenProductIsCreatedHandler(logger);
     const eventName = 'ProductCreatedEvent';
 
     eventDispatcher.register(eventName, eventHandler);
@@ -17,8 +25,13 @@ describe('Domain event test cases', () => {
   });
 
   it('should unregister a event handler', () => {
-    const eventDispatcher = new EventDispatcher();
-    const eventHandler = new SendEmailWhenProductIsCreatedHandler();
+    const logger = {
+      info: jest.fn(),
+      warn: jest.fn(),
+      error: jest.fn(),
+    };
+    const eventDispatcher = new EventDispatcher(logger);
+    const eventHandler = new SendEmailWhenProductIsCreatedHandler(logger);
     const eventName = 'ProductCreatedEvent';
 
     eventDispatcher.register(eventName, eventHandler);
@@ -28,8 +41,13 @@ describe('Domain event test cases', () => {
   });
 
   it('should unregister all handlers', () => {
-    const eventDispatcher = new EventDispatcher();
-    const eventHandler = new SendEmailWhenProductIsCreatedHandler();
+    const logger = {
+      info: jest.fn(),
+      warn: jest.fn(),
+      error: jest.fn(),
+    };
+    const eventDispatcher = new EventDispatcher(logger);
+    const eventHandler = new SendEmailWhenProductIsCreatedHandler(logger);
     const eventName = 'ProductCreatedEvent';
 
     eventDispatcher.register(eventName, eventHandler);
@@ -39,8 +57,13 @@ describe('Domain event test cases', () => {
   });
 
   it('should notify handlers', () => {
-    const eventDispatcher = new EventDispatcher();
-    const eventHandler = new SendEmailWhenProductIsCreatedHandler();
+    const logger = {
+      info: jest.fn(),
+      warn: jest.fn(),
+      error: jest.fn(),
+    };
+    const eventDispatcher = new EventDispatcher(logger);
+    const eventHandler = new SendEmailWhenProductIsCreatedHandler(logger);
     const spyHandler =  jest.spyOn(eventHandler, 'handle');
     const eventName = 'ProductCreatedEvent';
 

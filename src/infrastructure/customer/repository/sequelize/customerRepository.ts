@@ -8,15 +8,16 @@ import IEventDispatcher from "../../../../domain/@shared/event/IEventDispatcher"
 import ICustomerRepository from "../../../../domain/customer/repository/ICustomerRepository";
 import { CustomerNotFoundError } from "../../../../domain/@shared/errors/errors";
 import CustomerModel from "./customer.model";
+import ILogger from "../../../../domain/@shared/logger/ILogger";
 
 class CustomerRepository implements ICustomerRepository {
   private eventDispatcher: IEventDispatcher;
 
-  constructor() {
-    this.eventDispatcher = new EventDispatcher();
+  constructor(logger: ILogger) {
+    this.eventDispatcher = new EventDispatcher(logger);
 
-    const createHandler = new CustomerCreatedHandler();
-    const beforeCreateHandler = new BeforeCustomerIsCreated();
+    const createHandler = new CustomerCreatedHandler(logger);
+    const beforeCreateHandler = new BeforeCustomerIsCreated(logger);
     const eventName = 'CustomerCreated';
 
     this.eventDispatcher.register(eventName, createHandler);

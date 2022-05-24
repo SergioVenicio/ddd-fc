@@ -2,12 +2,18 @@ import BeforeCustomerIsCreated from "../../src/domain/customer/events/beforeCust
 import CustomerCreatedEvent from "../../src/domain/customer/events/customerCreatedEvent";
 import CustomerCreatedHandler from "../../src/domain/customer/events/customerCreatedHandler";
 import EventDispatcher from "../../src/domain/@shared/event/eventDispatcher";
+import Logger from "../../src/domain/@shared/logger/Logger";
 
 describe('Customer event test cases', () => {
   it('should notify a new customer event', () => {
-    const eventDispatcher = new EventDispatcher();
-    const createHandler = new CustomerCreatedHandler();
-    const beforeCreateHandler = new BeforeCustomerIsCreated();
+    const logger = {
+      info: jest.fn(),
+      warn: jest.fn(),
+      error: jest.fn(),
+    };
+    const eventDispatcher = new EventDispatcher(logger);
+    const createHandler = new CustomerCreatedHandler(logger);
+    const beforeCreateHandler = new BeforeCustomerIsCreated(logger);
     const eventName = 'CustomerCreated';
 
     const spyCreateHandler = jest.spyOn(createHandler, 'handle');

@@ -1,18 +1,21 @@
+import ILogger from "../logger/ILogger";
 import IEvent from "./IEvent";
 import IEventDispatcher from "./IEventDispatcher";
 import IEventHandler from "./IEventHandler";
 
 class EventDispatcher implements IEventDispatcher {
   private eventHandlers: {[eventName: string]: IEventHandler[]};
+  private logger: ILogger;
 
-  constructor() {
+  constructor(logger: ILogger) {
     this.eventHandlers = {};
+    this.logger = logger;
   }
 
   notify(event: IEvent): void {
     Object.entries(this.eventHandlers).map(([eventName, eventHandlers]) => {
       eventHandlers.map(eventHandler => {
-        console.log(`Notifying: ${eventName}...`);
+        this.logger.info(`Notifying: ${eventName}...`);
         eventHandler.handle(event);
       });
     });

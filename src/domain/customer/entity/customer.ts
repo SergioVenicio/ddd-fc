@@ -1,9 +1,10 @@
 import Address from './address';
 
 import {RequiredParametersError} from '../../@shared/errors/errors';
+import ICustomer from './ICustomer';
 
 
-class Customer {
+class Customer implements ICustomer {
   private _id: string;
   private _name: string;
   private _address: Address;
@@ -37,7 +38,7 @@ class Customer {
   }
 
   public isActive(): boolean {
-    return this.active;
+    return this._active;
   }
 
   public activate(): void {

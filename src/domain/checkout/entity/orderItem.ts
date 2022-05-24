@@ -1,6 +1,7 @@
 import { RequiredParametersError } from "../../@shared/errors/errors";
+import IOrderItem from "./IOrderItem";
 
-class OrderItem {
+class OrderItem implements IOrderItem {
   private _id: string;
   private _name: string;
   private _quantity: number;
