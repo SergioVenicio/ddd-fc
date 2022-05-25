@@ -1,20 +1,20 @@
 interface FindCustomerDTO {
-  id: string;
+  id: string
 }
 
 interface FindCustomerResponseDTO {
-  id: string;
-  name: string;
+  id: string
+  name: string
   address: {
-    street: string;
-    number: number;
-    city: string;
-    state: string;
-    zipCode: string;
-  };
+    street: string
+    number: number
+    city: string
+    state: string
+    zipCode: string
+  }
 }
 
 export {
   FindCustomerDTO,
   FindCustomerResponseDTO
-};
+}

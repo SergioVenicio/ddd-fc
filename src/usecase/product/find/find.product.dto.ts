@@ -1,11 +1,11 @@
 interface FindCustomerDTO {
-  id: string;
+  id: string
 }
 
 interface FindCustomerResponseDTO {
-  id: string;
-  name: string;
-  price: number;
+  id: string
+  name: string
+  price: number
 }
 
 export { FindCustomerDTO, FindCustomerResponseDTO }

@@ -1,13 +1,13 @@
-import IEvent from "../../@shared/event/IEvent";
+import IEvent from "../../@shared/event/IEvent"
 
 class ProductCreatedEvent implements IEvent {
-  dateTime: Date;
-  eventData: any;
+  dateTime: Date
+  eventData: any
 
   constructor(eventData: any) {
-    this.dateTime = new Date();
-    this.eventData = eventData;
+    this.dateTime = new Date()
+    this.eventData = eventData
   }
 }
 
-export default ProductCreatedEvent;
+export default ProductCreatedEvent

@@ -3,6 +3,7 @@
     "extends": [
         "tslint-config-airbnb"
     ],
+    "plugins": ["jest"],
     "jsRules": {},
     "rules": {},
     "rulesDirectory": []

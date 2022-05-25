@@ -1,12 +1,12 @@
-import Product from "../../../domain/product/entity/product";
-import IProductRepository from "../../../domain/product/repository/IProductRepository";
-import { UpdateProductDTO, UpdateProductResponseDTO } from "./update.customer.dto";
+import Product from "../../../domain/product/entity/product"
+import IProductRepository from "../../../domain/product/repository/IProductRepository"
+import { UpdateProductDTO, UpdateProductResponseDTO } from "./update.customer.dto"
 
 class UpdateProductUseCase {
-  private repository: IProductRepository;
+  private repository: IProductRepository
 
   constructor(repository: IProductRepository) {
-    this.repository = repository;
+    this.repository = repository
   }
 
   async execute(input: UpdateProductDTO): Promise<UpdateProductResponseDTO> {
@@ -15,7 +15,7 @@ class UpdateProductUseCase {
       input.name,
       input.price
     )
-    await this.repository.update(product);
+    await this.repository.update(product)
     return {
       id: product.id,
       name: product.name,
@@ -24,4 +24,4 @@ class UpdateProductUseCase {
   }
 }
 
-export default UpdateProductUseCase;
+export default UpdateProductUseCase

@@ -1,5 +1,5 @@
-import Product from "../entity/product";
-import { ParameterValueError } from "../../@shared/errors/errors";
+import Product from "../entity/product"
+import { ParameterValueError } from "../../@shared/errors/errors"
 
 class ProductService {
   public static IncreasePrice(products: Product[], percentage: number): Product[] {
@@ -11,10 +11,10 @@ class ProductService {
     }
 
     return products.map(product => {
-      const newPrice = product.price + (product.price * (percentage / 100));
-      return new Product(product.id, product.name, newPrice);
-    });
+      const newPrice = product.price + (product.price * (percentage / 100))
+      return new Product(product.id, product.name, newPrice)
+    })
   }
 }
 
-export default ProductService;
+export default ProductService

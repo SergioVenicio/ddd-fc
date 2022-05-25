@@ -1,7 +1,7 @@
-import IOrder from "../entity/IOrder";
-import Order from "../entity/order";
+import IOrder from "../entity/IOrder"
+import Order from "../entity/order"
 
-import {v4} from "uuid";
+import {v4} from "uuid"
 
 interface OrderCreateProps {
   customerId: string,
@@ -15,13 +15,13 @@ interface OrderCreateProps {
 }
 class OrderFactory {
   public static Create(orderProps: OrderCreateProps): IOrder {
-    const id = v4();
+    const id = v4()
     return new Order(
       id,
       orderProps.customerId,
       orderProps.items
-    );
+    )
   }
 }
 
-export default OrderFactory;
+export default OrderFactory

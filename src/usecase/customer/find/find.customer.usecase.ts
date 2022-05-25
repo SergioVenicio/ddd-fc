@@ -1,16 +1,16 @@
-import ICustomerRepository from "../../../domain/customer/repository/ICustomerRepository";
-import { FindCustomerDTO, FindCustomerResponseDTO } from "./find.customer.dto";
+import ICustomerRepository from "../../../domain/customer/repository/ICustomerRepository"
+import { FindCustomerDTO, FindCustomerResponseDTO } from "./find.customer.dto"
 
 
 class FindCustomerUseCase {
-  private repository: ICustomerRepository;
+  private repository: ICustomerRepository
 
   constructor(repository: ICustomerRepository) {
-    this.repository = repository;
+    this.repository = repository
   }
 
   async execute(input: FindCustomerDTO): Promise<FindCustomerResponseDTO> {
-    const customer = await this.repository.find(input.id);
+    const customer = await this.repository.find(input.id)
     return {
       id: customer.id,
       name: customer.name,
@@ -25,4 +25,4 @@ class FindCustomerUseCase {
   }
 }
 
-export default FindCustomerUseCase;
+export default FindCustomerUseCase

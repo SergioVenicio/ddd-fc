@@ -1,15 +1,15 @@
-import ICustomerRepository from "../../../domain/customer/repository/ICustomerRepository";
-import { ListCustomerResponseDTO } from "./list.customer.dto";
+import ICustomerRepository from "../../../domain/customer/repository/ICustomerRepository"
+import { ListCustomerResponseDTO } from "./list.customer.dto"
 
 class ListCustomerUseCase {
-  private repository: ICustomerRepository;
+  private repository: ICustomerRepository
 
   constructor(repository: ICustomerRepository) {
-    this.repository = repository;
+    this.repository = repository
   }
 
   async execute(): Promise<ListCustomerResponseDTO> {
-    const customers = await this.repository.findAll();
+    const customers = await this.repository.findAll()
     const response = customers.map(customer => ({
       id: customer.id,
       name: customer.name,
@@ -20,11 +20,11 @@ class ListCustomerUseCase {
         state: customer.address.state,
         zipCode: customer.address.zipCode,
       }
-    }));
+    }))
     return {
       customers: response
-    };
+    }
   }
 }
 
-export default ListCustomerUseCase;
+export default ListCustomerUseCase

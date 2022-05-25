@@ -1,7 +1,7 @@
-import { BelongsTo, Column, ForeignKey, HasMany, Model, PrimaryKey, Table } from "sequelize-typescript";
-import { HasManyAddAssociationMixin } from "sequelize/types";
-import CustomerModel from "../../../customer/repository/sequelize/customer.model";
-import OrderItemModel from "./orderItem.model";
+import { BelongsTo, Column, ForeignKey, HasMany, Model, PrimaryKey, Table } from "sequelize-typescript"
+import { HasManyAddAssociationMixin } from "sequelize/types"
+import CustomerModel from "../../../customer/repository/sequelize/customer.model"
+import OrderItemModel from "./orderItem.model"
 
 
 @Table({
@@ -9,24 +9,24 @@ import OrderItemModel from "./orderItem.model";
   timestamps: false
 })
 class OrderModel extends Model {
-  public addItem: HasManyAddAssociationMixin<OrderItemModel, OrderItemModel>;
+  public addItem: HasManyAddAssociationMixin<OrderItemModel, OrderItemModel>
 
   @PrimaryKey
   @Column
-  declare id: string;
+  declare id: string
 
   @Column({ allowNull: false })
-  declare total: number;
+  declare total: number
 
   @ForeignKey(() => CustomerModel)
   @Column({allowNull: false})
-  declare customer_id: string;
+  declare customer_id: string
 
   @BelongsTo(() => CustomerModel)
-  declare customer: CustomerModel;
+  declare customer: CustomerModel
 
   @HasMany(() => OrderItemModel)
-  declare items: OrderItemModel[];
+  declare items: OrderItemModel[]
 }
 
-export default OrderModel;
+export default OrderModel

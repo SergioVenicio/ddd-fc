@@ -1,13 +1,13 @@
-import Address from "../../../domain/customer/entity/address";
-import Customer from "../../../domain/customer/entity/customer";
-import ICustomerRepository from "../../../domain/customer/repository/ICustomerRepository";
-import { UpdateCustomerDTO, UpdateCustomerResponseDTO } from "./update.customer.dto";
+import Address from "../../../domain/customer/entity/address"
+import Customer from "../../../domain/customer/entity/customer"
+import ICustomerRepository from "../../../domain/customer/repository/ICustomerRepository"
+import { UpdateCustomerDTO, UpdateCustomerResponseDTO } from "./update.customer.dto"
 
 class UpdateCustomerUseCase {
-  private repository: ICustomerRepository;
+  private repository: ICustomerRepository
 
   constructor(repository: ICustomerRepository) {
-    this.repository = repository;
+    this.repository = repository
   }
 
   async execute(input: UpdateCustomerDTO): Promise<UpdateCustomerResponseDTO> {
@@ -17,13 +17,13 @@ class UpdateCustomerUseCase {
       input.address.city,
       input.address.state,
       input.address.zipCode,
-    );
+    )
     const customer = new Customer(
       input.id,
       input.name,
       address
     )
-    await this.repository.update(customer);
+    await this.repository.update(customer)
     return {
       id: customer.id,
       name: customer.name,
@@ -38,4 +38,4 @@ class UpdateCustomerUseCase {
   }
 }
 
-export default UpdateCustomerUseCase;
+export default UpdateCustomerUseCase

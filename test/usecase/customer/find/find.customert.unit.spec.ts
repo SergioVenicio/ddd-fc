@@ -1,7 +1,7 @@
-import Address from "../../../../src/domain/customer/entity/address";
-import Customer from "../../../../src/domain/customer/entity/customer";
+import Address from "../../../../src/domain/customer/entity/address"
+import Customer from "../../../../src/domain/customer/entity/customer"
 
-import FindCustomerUseCase from "../../../../src/usecase/customer/find/find.customer.usecase";
+import FindCustomerUseCase from "../../../../src/usecase/customer/find/find.customer.usecase"
 
 
 describe("unit test find customer usecase", () => {
@@ -10,7 +10,7 @@ describe("unit test find customer usecase", () => {
       "123",
       "John Doe",
       new Address("test", 123, "test", "TS", "1234-543")
-    );
+    )
 
     const customerRepository = {
       find: jest.fn().mockReturnValue(Promise.resolve(customer)),
@@ -18,15 +18,15 @@ describe("unit test find customer usecase", () => {
       create: jest.fn(),
       update: jest.fn()
     }
-    const findCustomerUseCase = new FindCustomerUseCase(customerRepository);
+    const findCustomerUseCase = new FindCustomerUseCase(customerRepository)
 
-    await customerRepository.create(customer);
+    await customerRepository.create(customer)
 
     const findInput = {
       id: "123"
-    };
+    }
 
-    const response = await findCustomerUseCase.execute(findInput);
+    const response = await findCustomerUseCase.execute(findInput)
     expect(response).toStrictEqual({
       id: "123",
       name: "John Doe",

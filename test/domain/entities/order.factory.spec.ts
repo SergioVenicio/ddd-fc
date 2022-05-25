@@ -1,5 +1,5 @@
-import { v4 } from "uuid";
-import OrderFactory from "../../../src/domain/checkout/factory/order.factory";
+import { v4 } from "uuid"
+import OrderFactory from "../../../src/domain/checkout/factory/order.factory"
 
 describe("OrderFactory test cases", () => {
   it("should create an order", () => {
@@ -16,11 +16,11 @@ describe("OrderFactory test cases", () => {
         }
       ]
     }
-    const order = OrderFactory.Create(orderProps);
+    const order = OrderFactory.Create(orderProps)
 
-    expect(order.id).toBeDefined();
-    expect(order.customerId).toEqual(orderProps.customerId);
-    expect(order.items.length).toBe(1);
-    expect(order.items[0].name).toEqual("Product 1");
-  });
-});
+    expect(order.id).toBeDefined()
+    expect(order.customerId).toEqual(orderProps.customerId)
+    expect(order.items.length).toBe(1)
+    expect(order.items[0].name).toEqual("Product 1")
+  })
+})

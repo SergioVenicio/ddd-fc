@@ -1,7 +1,7 @@
-import IEvent from "./IEvent";
+import IEvent from "./IEvent"
 
 interface IEventHandler<T extends IEvent=IEvent> {
-  handle(event: T): void;
+  handle(event: T): void
 }
 
-export default IEventHandler;
+export default IEventHandler

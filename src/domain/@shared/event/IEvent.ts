@@ -1,6 +1,6 @@
 interface IEvent {
-  dateTime: Date;
-  eventData: any;
+  dateTime: Date
+  eventData: any
 }
 
-export default IEvent;
+export default IEvent

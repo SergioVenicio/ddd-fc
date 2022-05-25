@@ -1,36 +1,36 @@
-import { PriceError, RequiredParametersError } from "../../@shared/errors/errors";
-import IProduct from "./IProduct";
+import { PriceError, RequiredParametersError } from "../../@shared/errors/errors"
+import IProduct from "./IProduct"
 
 class Product implements IProduct {
-  private readonly _id: string;
-  private _name: string;
-  private _price: number;
+  private readonly _id: string
+  private _name: string
+  private _price: number
 
   constructor(id: string, name: string, price: number) {
-      this._id = String(id);
-      this._name = String(name);
-      this._price = Number(price);
+      this._id = String(id)
+      this._name = String(name)
+      this._price = Number(price)
 
-      this.validate();
+      this.validate()
     }
 
     public get id(): string {
-      return String(this._id);
+      return String(this._id)
     }
 
     public get name(): string {
-      return String(this._name);
+      return String(this._name)
     }
 
     public get price(): number {
-      return Number(this._price);
+      return Number(this._price)
     }
 
     public changePrice(price: number): void {
       if (price <= 0) {
-        throw new PriceError("Price field must be greter than 0");
+        throw new PriceError("Price field must be greter than 0")
       }
-      this._price = Number(price);
+      this._price = Number(price)
     }
 
     private validate(): void {
@@ -46,4 +46,4 @@ class Product implements IProduct {
   }
 }
 
-export default Product;
+export default Product

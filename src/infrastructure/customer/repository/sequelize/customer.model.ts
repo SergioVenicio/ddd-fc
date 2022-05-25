@@ -1,4 +1,4 @@
-import { Column, Default, Model, PrimaryKey, Table } from "sequelize-typescript";
+import { Column, Default, Model, PrimaryKey, Table } from "sequelize-typescript"
 
 
 @Table({
@@ -8,32 +8,32 @@ import { Column, Default, Model, PrimaryKey, Table } from "sequelize-typescript"
 class CustomerModel extends Model {
   @PrimaryKey
   @Column
-  declare id: string;
+  declare id: string
 
   @Column({allowNull: false})
-  declare name: string;
+  declare name: string
 
   @Column({allowNull: false})
-  declare active: boolean;
+  declare active: boolean
 
   @Column({allowNull: false})
-  declare street: string;
+  declare street: string
 
   @Column({allowNull: false})
-  declare number: number;
+  declare number: number
 
   @Column({allowNull: false})
-  declare city: string;
+  declare city: string
 
   @Column({allowNull: false})
-  declare state: string;
+  declare state: string
 
   @Column({allowNull: false})
-  declare zipCode: string;
+  declare zipCode: string
 
   @Default(0)
   @Column
-  declare rewardPoints: number;
+  declare rewardPoints: number
 }
 
-export default CustomerModel;
+export default CustomerModel

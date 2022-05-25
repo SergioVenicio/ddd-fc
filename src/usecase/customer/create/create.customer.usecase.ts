@@ -1,13 +1,13 @@
-import Customer from "../../../domain/customer/entity/customer";
-import CustomerFactory from "../../../domain/customer/factory/customer.factory";
-import ICustomerRepository from "../../../domain/customer/repository/ICustomerRepository";
-import {CreateCustomerDTO, CreateCustomerResponseDTO} from "./create.customer.dto";
+import Customer from "../../../domain/customer/entity/customer"
+import CustomerFactory from "../../../domain/customer/factory/customer.factory"
+import ICustomerRepository from "../../../domain/customer/repository/ICustomerRepository"
+import {CreateCustomerDTO, CreateCustomerResponseDTO} from "./create.customer.dto"
 
 class CreateCustomerUseCase {
-  private repository: ICustomerRepository;
+  private repository: ICustomerRepository
 
   constructor(repository: ICustomerRepository) {
-    this.repository = repository;
+    this.repository = repository
   }
 
   async execute(input: CreateCustomerDTO): Promise<CreateCustomerResponseDTO> {
@@ -18,8 +18,8 @@ class CreateCustomerUseCase {
       input.address.city,
       input.address.state,
       input.address.zipCode
-    );
-    await this.repository.create(customer as Customer);
+    )
+    await this.repository.create(customer as Customer)
     return {
       ...input,
       id: customer.id
@@ -27,4 +27,4 @@ class CreateCustomerUseCase {
   }
 }
 
-export default CreateCustomerUseCase;
+export default CreateCustomerUseCase

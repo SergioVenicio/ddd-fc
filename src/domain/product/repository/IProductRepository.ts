@@ -1,7 +1,7 @@
-import Product from "../entity/product";
-import IRepository from "../../@shared/repository/IRepository";
+import Product from "../entity/product"
+import IRepository from "../../@shared/repository/IRepository"
 
 
 interface IProductRepository extends IRepository<Product> {}
 
-export default IProductRepository;
+export default IProductRepository

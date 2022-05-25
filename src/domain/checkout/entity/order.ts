@@ -1,39 +1,39 @@
-import OrderItem from "./orderItem";
+import OrderItem from "./orderItem"
 
-import { RequiredParametersError } from "../../@shared/errors/errors";
-import IOrder from "./IOrder";
-import IOrderItem from "./IOrderItem";
+import { RequiredParametersError } from "../../@shared/errors/errors"
+import IOrder from "./IOrder"
+import IOrderItem from "./IOrderItem"
 
 
 class Order implements IOrder {
-  private readonly _id: string;
-  private _customerId: string;
-  private _items: IOrderItem[];
+  private readonly _id: string
+  private _customerId: string
+  private _items: IOrderItem[]
 
   constructor(id: string, customerId: string, items: IOrderItem[]) {
-    this._id = String(id);
-    this._customerId = String(customerId);
-    this._items = [...items];
+    this._id = String(id)
+    this._customerId = String(customerId)
+    this._items = [...items]
 
-    this.validate();
+    this.validate()
   }
 
   public get id(): string {
-    return String(this._id);
+    return String(this._id)
   }
 
   public get customerId(): string {
-    return String(this._customerId);
+    return String(this._customerId)
   }
 
   public get items(): IOrderItem[] {
-    return [...this._items];
+    return [...this._items]
   }
 
   public get total(): number {
     return this._items.reduce((total, item) => {
-      return Number(total + (item.price * item.quantity));
-    }, 0);
+      return Number(total + (item.price * item.quantity))
+    }, 0)
   }
 
   private validate(): void {
@@ -49,4 +49,4 @@ class Order implements IOrder {
   }
 }
 
-export default Order;
+export default Order
