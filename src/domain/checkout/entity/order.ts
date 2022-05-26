@@ -40,19 +40,19 @@ class Order extends Entity implements IOrder {
 
   private validate(): void {
     if (this.id == '') {
-      this.nofitication.addError({
+      this.notification.addError({
         message: 'Id parameter is required!',
         context: 'order'
       })
     }
     if (!(this?.customerId)) {
-      this.nofitication.addError({
+      this.notification.addError({
         message: 'CustomerId parameter is required!!',
         context: 'order'
       })
     }
     if (this.items?.length <= 0) {
-      this.nofitication.addError({
+      this.notification.addError({
         message: 'Items parameter is required!',
         context: 'order'
       })
@@ -60,10 +60,10 @@ class Order extends Entity implements IOrder {
   }
 
   hasErrors(): boolean {
-    return this.nofitication.errors.length > 0
+    return this.notification.errors.length > 0
   }
   getErrors(): NotificationErrorProps[] {
-    return this.nofitication.errors
+    return this.notification.errors
   }
 }
 

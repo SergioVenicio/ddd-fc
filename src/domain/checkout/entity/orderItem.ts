@@ -44,31 +44,31 @@ class OrderItem extends Entity implements IOrderItem {
 
   private validate(): void {
     if (!(this?.id)) {
-      this.nofitication.addError({
+      this.notification.addError({
         message: 'Id parameter is required!',
         context: 'order'
       })
     }
     if (!(this?.name)) {
-      this.nofitication.addError({
+      this.notification.addError({
         message: 'Name parameter is required!',
         context: 'order'
       })
     }
     if (!(this?.quantity)) {
-      this.nofitication.addError({
+      this.notification.addError({
         message: 'Quantity parameter is required!',
         context: 'order'
       })
     }
     if (!(this?.price)) {
-      this.nofitication.addError({
+      this.notification.addError({
         message: 'Price parameter is required!',
         context: 'order'
       })
     }
     if (!(this?.productId)) {
-      this.nofitication.addError({
+      this.notification.addError({
         message: 'ProductId parameter is required!',
         context: 'order'
       })
@@ -76,10 +76,10 @@ class OrderItem extends Entity implements IOrderItem {
   }
 
   hasErrors(): boolean {
-    return this.nofitication.errors.length > 0
+    return this.notification.errors.length > 0
   }
   getErrors(): NotificationErrorProps[] {
-    return this.nofitication.errors
+    return this.notification.errors
   }
 }
 

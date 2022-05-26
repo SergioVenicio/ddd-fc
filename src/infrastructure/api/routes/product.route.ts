@@ -2,7 +2,7 @@ import express, { Request, Response } from 'express'
 import CreateProductUseCase from '../../../usecase/product/create/create.product.usecase'
 import FindProductUseCase from '../../../usecase/product/find/find.product.usecase'
 import ListProductUseCase from '../../../usecase/product/list/list.product.usecase'
-import UpdateProductUseCase from '../../../usecase/product/update/update.customer.usecase'
+import UpdateProductUseCase from '../../../usecase/product/update/update.product.usecase'
 import ProductRepository from '../../product/repository/sequelize/productRepository'
 
 const productRouter = express.Router()

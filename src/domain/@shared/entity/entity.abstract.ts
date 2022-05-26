@@ -1,10 +1,10 @@
 import Notification, { NotificationErrorProps } from "../notification/notification"
 
 abstract class Entity {
-  protected nofitication: Notification
+  public notification: Notification
 
   constructor() {
-    this.nofitication = new Notification()
+    this.notification = new Notification()
   }
 
   abstract hasErrors(): boolean;

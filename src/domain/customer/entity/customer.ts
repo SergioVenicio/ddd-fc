@@ -3,6 +3,7 @@ import Address from './address'
 import ICustomer from './ICustomer'
 import Entity from '../../@shared/entity/entity.abstract'
 import { NotificationErrorProps } from '../../@shared/notification/notification'
+import CustomerValidatorFactory from '../factory/customerValidator.factory'
 
 
 class Customer extends Entity implements ICustomer {
@@ -61,26 +62,15 @@ class Customer extends Entity implements ICustomer {
   }
 
   private validate(): void {
-    if (!(this?.id)) {
-      this.nofitication.addError({
-        message: 'Id is requred!',
-        context: 'customer'
-      })
-    }
-    if (!(this?.name)) {
-      this.nofitication.addError({
-        message: 'Name is requred!',
-        context: 'customer'
-      })
-    }
+    CustomerValidatorFactory.create().validate(this)
   }
 
   public hasErrors(): boolean {
-    return this.nofitication.messages().length > 0
+    return this.notification.errors.length > 0
   }
 
   public getErrors(): NotificationErrorProps[] {
-    return this.nofitication.errors;
+    return this.notification.errors;
   }
 }
 

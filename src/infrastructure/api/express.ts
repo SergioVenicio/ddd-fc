@@ -24,7 +24,7 @@ async function setupDB() {
     ProductModel
   ])
 
-  await sequelize.sync
+  await sequelize.sync()
 }
 
 setupDB()

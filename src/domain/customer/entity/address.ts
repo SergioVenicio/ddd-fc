@@ -1,7 +1,9 @@
-import { RequiredParametersError } from "../../@shared/errors/errors"
+import Entity from "../../@shared/entity/entity.abstract"
+import { NotificationErrorProps } from "../../@shared/notification/notification"
+import AddressValidatorFactory from "../factory/addressValidator.factory"
 import IAddress from "./IAddress"
 
-class Address implements IAddress {
+class Address extends Entity implements IAddress {
   public readonly _street: string
   public readonly _number: number
   public readonly _city: string
@@ -9,6 +11,8 @@ class Address implements IAddress {
   public readonly _zipCode: string
 
   constructor(street: string, number: number, city: string, state: string, zipCode: string) {
+    super()
+
     this._street = String(street)
     this._number = Number(number)
     this._city = String(city)
@@ -38,22 +42,15 @@ class Address implements IAddress {
     return this._zipCode
   }
 
+  hasErrors(): boolean {
+    return this.notification.errors.length > 0
+  }
+  getErrors(): NotificationErrorProps[] {
+    return this.notification.errors
+  }
+
   private validate() {
-    if (!(this?._street)) {
-      throw new RequiredParametersError("Street is required!")
-    }
-    if (!(this?._number)) {
-      throw new RequiredParametersError("Number is required!")
-    }
-    if (!(this?._city)) {
-      throw new RequiredParametersError("City is required!")
-    }
-    if (!(this?._state)) {
-      throw new RequiredParametersError("State is required!")
-    }
-    if (!(this?._zipCode)) {
-      throw new RequiredParametersError("Zip Code is required!")
-    }
+    AddressValidatorFactory.create().validate(this)
   }
 }
 

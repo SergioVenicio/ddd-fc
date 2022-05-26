@@ -13,12 +13,12 @@ class CreateCustomerUseCase {
 
   async execute(input: CreateCustomerDTO): Promise<CreateCustomerResponseDTO> {
     const customer = CustomerFactory.Create(
-      input.name,
-      input.address.street,
-      input.address.number,
-      input.address.city,
-      input.address.state,
-      input.address.zipCode
+      input?.name,
+      input?.address?.street,
+      input?.address?.number,
+      input?.address?.city,
+      input?.address?.state,
+      input?.address?.zipCode
     ) as Customer
 
     if (customer.hasErrors()) {

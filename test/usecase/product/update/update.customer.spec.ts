@@ -3,7 +3,7 @@ import NotificationError from "../../../../src/domain/@shared/notification/notif
 import Product from "../../../../src/domain/product/entity/product"
 import ProductModel from "../../../../src/infrastructure/product/repository/sequelize/product.model"
 import ProductRepository from "../../../../src/infrastructure/product/repository/sequelize/productRepository"
-import UpdateProductUseCase from "../../../../src/usecase/product/update/update.customer.usecase"
+import UpdateProductUseCase from "../../../../src/usecase/product/update/update.product.usecase"
 
 
 describe("test update product usecase", () => {

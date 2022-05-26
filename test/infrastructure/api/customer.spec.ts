@@ -1,5 +1,4 @@
 import request from 'supertest'
-import { response } from 'express'
 import { app, sequelize } from '../../../src/infrastructure/api/express'
 
 describe('api end to end customer test', () => {

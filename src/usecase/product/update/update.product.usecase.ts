@@ -1,7 +1,7 @@
 import NotificationError from "../../../domain/@shared/notification/notification.error"
 import Product from "../../../domain/product/entity/product"
 import IProductRepository from "../../../domain/product/repository/IProductRepository"
-import { UpdateProductDTO, UpdateProductResponseDTO } from "./update.customer.dto"
+import { UpdateProductDTO, UpdateProductResponseDTO } from "./update.product.dto"
 
 class UpdateProductUseCase {
   private repository: IProductRepository

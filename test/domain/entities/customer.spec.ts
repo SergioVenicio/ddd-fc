@@ -14,21 +14,8 @@ describe('Customer test cases', () => {
   })
 
   it("should not create Address without required fields", () => {
-    expect(() => {
-      new Address("", 123, "test", "test", "test")
-    }).toThrow(RequiredParametersError)
-    expect(() => {
-      new Address("test", 0, "test", "test", "test")
-    }).toThrow(RequiredParametersError)
-    expect(() => {
-      new Address("test", 123, "", "test", "test")
-    }).toThrow(RequiredParametersError)
-    expect(() => {
-      new Address("test", 123, "test", "", "test")
-    }).toThrow(RequiredParametersError)
-    expect(() => {
-      new Address("test", 123, "test", "test", "")
-    }).toThrow(RequiredParametersError)
+    const address = new Address("", 123, "test", "test", "test")
+    expect(address.hasErrors()).toBe(true)
   })
 
   it("should create new Customer", () => {
