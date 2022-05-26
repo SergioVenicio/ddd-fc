@@ -1,3 +1,4 @@
+import NotificationError from "../../../domain/@shared/notification/notification.error"
 import Product from "../../../domain/product/entity/product"
 import IProductRepository from "../../../domain/product/repository/IProductRepository"
 import { UpdateProductDTO, UpdateProductResponseDTO } from "./update.customer.dto"
@@ -15,6 +16,10 @@ class UpdateProductUseCase {
       input.name,
       input.price
     )
+
+    if (product.hasErrors()) {
+      throw new NotificationError(product.getErrors())
+    }
     await this.repository.update(product)
     return {
       id: product.id,

@@ -55,12 +55,9 @@ describe('Customer test cases', () => {
   it("should not create Customer without required fields", () => {
     const customerAddr = new Address("test", 123, "test", "test", "123-321")
 
-    expect(() => {
-      new Customer("", "test", customerAddr)
-    }).toThrow(RequiredParametersError)
-    expect(() => {
-      new Customer("test", "", customerAddr)
-    }).toThrow(RequiredParametersError)
+    const customer = new Customer("", "test", customerAddr)
+
+    expect(customer.hasErrors()).toBe(true)
   })
 
   it("should add reward points", () => {

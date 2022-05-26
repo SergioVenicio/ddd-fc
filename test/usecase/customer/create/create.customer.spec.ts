@@ -5,7 +5,7 @@ import CreateUserUseCase from "../../../../src/usecase/customer/create/create.cu
 
 import CustomerModel from "../../../../src/infrastructure/customer/repository/sequelize/customer.model"
 import CustomerRepository from "../../../../src/infrastructure/customer/repository/sequelize/customerRepository"
-import { RequiredParametersError } from "../../../../src/domain/@shared/errors/errors"
+import NotificationError from "../../../../src/domain/@shared/notification/notification.error"
 
 
 describe("test create customer usecase", () => {
@@ -76,6 +76,6 @@ describe("test create customer usecase", () => {
     
     await expect(
       createUserUseCase.execute(createInput)
-    ).rejects.toThrowError(RequiredParametersError)
+    ).rejects.toThrowError(NotificationError)
   })
 })

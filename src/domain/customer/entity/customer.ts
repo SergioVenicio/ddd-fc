@@ -1,10 +1,11 @@
 import Address from './address'
 
-import {RequiredParametersError} from '../../@shared/errors/errors'
 import ICustomer from './ICustomer'
+import Entity from '../../@shared/entity/entity.abstract'
+import { NotificationErrorProps } from '../../@shared/notification/notification'
 
 
-class Customer implements ICustomer {
+class Customer extends Entity implements ICustomer {
   private _id: string
   private _name: string
   private _address: Address
@@ -12,6 +13,8 @@ class Customer implements ICustomer {
   private _rewardsPoints: number
 
   constructor(id: string, name: string, address: Address) {
+    super()
+
     this._id = String(id)
     this._name = String(name)
     this._address = address
@@ -59,11 +62,25 @@ class Customer implements ICustomer {
 
   private validate(): void {
     if (!(this?.id)) {
-      throw new RequiredParametersError("Id is required!")
+      this.nofitication.addError({
+        message: 'Id is requred!',
+        context: 'customer'
+      })
     }
     if (!(this?.name)) {
-      throw new RequiredParametersError("Name is required!")
+      this.nofitication.addError({
+        message: 'Name is requred!',
+        context: 'customer'
+      })
     }
+  }
+
+  public hasErrors(): boolean {
+    return this.nofitication.messages().length > 0
+  }
+
+  public getErrors(): NotificationErrorProps[] {
+    return this.nofitication.errors;
   }
 }
 

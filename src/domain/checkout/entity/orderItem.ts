@@ -1,7 +1,9 @@
+import Entity from "../../@shared/entity/entity.abstract"
 import { RequiredParametersError } from "../../@shared/errors/errors"
+import { NotificationErrorProps } from "../../@shared/notification/notification"
 import IOrderItem from "./IOrderItem"
 
-class OrderItem implements IOrderItem {
+class OrderItem extends Entity implements IOrderItem {
   private _id: string
   private _name: string
   private _quantity: number
@@ -9,6 +11,8 @@ class OrderItem implements IOrderItem {
   private _productId: string
 
   constructor(id: string, name: string, price: number, productId: string, quantity: number) {
+    super()
+
     this._id = String(id)
     this._name = String(name)
     this._price = Number(price)
@@ -40,20 +44,42 @@ class OrderItem implements IOrderItem {
 
   private validate(): void {
     if (!(this?.id)) {
-      throw new RequiredParametersError("Id parameter is required!")
+      this.nofitication.addError({
+        message: 'Id parameter is required!',
+        context: 'order'
+      })
     }
     if (!(this?.name)) {
-      throw new RequiredParametersError("Name parameter is required!")
+      this.nofitication.addError({
+        message: 'Name parameter is required!',
+        context: 'order'
+      })
     }
     if (!(this?.quantity)) {
-      throw new RequiredParametersError("Quantity parameter is required!")
+      this.nofitication.addError({
+        message: 'Quantity parameter is required!',
+        context: 'order'
+      })
     }
     if (!(this?.price)) {
-      throw new RequiredParametersError("Price parameter is required!")
+      this.nofitication.addError({
+        message: 'Price parameter is required!',
+        context: 'order'
+      })
     }
     if (!(this?.productId)) {
-      throw new RequiredParametersError("ProductId parameter is required!")
+      this.nofitication.addError({
+        message: 'ProductId parameter is required!',
+        context: 'order'
+      })
     }
+  }
+
+  hasErrors(): boolean {
+    return this.nofitication.errors.length > 0
+  }
+  getErrors(): NotificationErrorProps[] {
+    return this.nofitication.errors
   }
 }
 

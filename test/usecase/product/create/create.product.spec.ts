@@ -1,5 +1,5 @@
 import { Sequelize } from "sequelize-typescript"
-import { RequiredParametersError } from "../../../../src/domain/@shared/errors/errors"
+import NotificationError from "../../../../src/domain/@shared/notification/notification.error"
 import ProductModel from "../../../../src/infrastructure/product/repository/sequelize/product.model"
 import ProductRepository from "../../../../src/infrastructure/product/repository/sequelize/productRepository"
 import CreateProductUseCase from "../../../../src/usecase/product/create/create.product.usecase"
@@ -52,6 +52,6 @@ describe("test create customer usecase", () => {
     
     await expect(
       createProducUseCase.execute(createInput)
-    ).rejects.toThrowError(RequiredParametersError)
+    ).rejects.toThrowError(NotificationError)
   })
 })

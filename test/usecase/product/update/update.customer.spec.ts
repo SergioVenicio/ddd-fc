@@ -1,5 +1,5 @@
 import { Sequelize } from "sequelize-typescript"
-import { RequiredParametersError } from "../../../../src/domain/@shared/errors/errors"
+import NotificationError from "../../../../src/domain/@shared/notification/notification.error"
 import Product from "../../../../src/domain/product/entity/product"
 import ProductModel from "../../../../src/infrastructure/product/repository/sequelize/product.model"
 import ProductRepository from "../../../../src/infrastructure/product/repository/sequelize/productRepository"
@@ -63,6 +63,6 @@ describe("test update product usecase", () => {
     }
     await expect(
       updateCustomerUseCase.execute(updateInput)
-    ).rejects.toThrow(RequiredParametersError)
+    ).rejects.toThrow(NotificationError)
   })
 })

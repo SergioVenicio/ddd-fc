@@ -1,3 +1,4 @@
+import NotificationError from "../../../domain/@shared/notification/notification.error"
 import Address from "../../../domain/customer/entity/address"
 import Customer from "../../../domain/customer/entity/customer"
 import ICustomerRepository from "../../../domain/customer/repository/ICustomerRepository"
@@ -23,6 +24,11 @@ class UpdateCustomerUseCase {
       input.name,
       address
     )
+
+    if (customer.hasErrors()) {
+      throw new NotificationError(customer.getErrors())
+    }
+
     await this.repository.update(customer)
     return {
       id: customer.id,

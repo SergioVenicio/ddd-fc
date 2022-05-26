@@ -1,3 +1,4 @@
+import NotificationError from "../../../domain/@shared/notification/notification.error"
 import Customer from "../../../domain/customer/entity/customer"
 import CustomerFactory from "../../../domain/customer/factory/customer.factory"
 import ICustomerRepository from "../../../domain/customer/repository/ICustomerRepository"
@@ -18,7 +19,11 @@ class CreateCustomerUseCase {
       input.address.city,
       input.address.state,
       input.address.zipCode
-    )
+    ) as Customer
+
+    if (customer.hasErrors()) {
+      throw new NotificationError(customer.getErrors())
+    }
     await this.repository.create(customer as Customer)
     return {
       ...input,

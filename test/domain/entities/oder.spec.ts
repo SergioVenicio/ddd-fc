@@ -1,7 +1,6 @@
 import Order from "../../../src/domain/checkout/entity/order"
 import OrderItem from "../../../src/domain/checkout/entity/orderItem"
 import Product from "../../../src/domain/product/entity/product"
-import { RequiredParametersError } from "../../../src/domain/@shared/errors/errors"
 
 describe('Order test cases', () => {
   it("should create new OrderItem", () => {
@@ -15,25 +14,8 @@ describe('Order test cases', () => {
 
   it("should not create new OrderItem without required fields", () => {
     const product = new Product("1", "test", 1.99)
-    expect(() => {
-      new OrderItem("", "test", product.price, product.id, 1)
-    }).toThrow(RequiredParametersError)
-
-    expect(() => {
-      new OrderItem("1", "", product.price, product.id, 1)
-    }).toThrow(RequiredParametersError)
-
-    expect(() => {
-      new OrderItem("1", "test", 0, product.id, 1)
-    }).toThrow(RequiredParametersError)
-
-    expect(() => {
-      new OrderItem("1", "test", 1, "", 1)
-    }).toThrow(RequiredParametersError)
-
-    expect(() => {
-      new OrderItem("1", "test", 1, "test", 0)
-    }).toThrow(RequiredParametersError)
+    const item = new OrderItem("", "test", product.price, product.id, 1)
+    expect(item.hasErrors()).toBe(true)
   })
 
   it("shuld create new Order", () => {
@@ -53,16 +35,7 @@ describe('Order test cases', () => {
   it("should not create new Order without required fields", () => {
     const product = new Product("1", "test", 1.99)
     const items = [new OrderItem("1", "test", product.price, product.id, 1)]
-    expect(() => {
-      new Order("", "1", items)
-    }).toThrow(RequiredParametersError)
-
-    expect(() => {
-      new Order("test", "", items)
-    }).toThrow(RequiredParametersError)
-
-    expect(() => {
-      new Order("test", "1", [])
-    }).toThrow(RequiredParametersError)
+    const order = new Order("", "1", items)
+    expect(order.hasErrors()).toBe(true)
   })
 })

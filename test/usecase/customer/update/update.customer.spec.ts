@@ -1,5 +1,5 @@
 import { Sequelize } from "sequelize-typescript"
-import { RequiredParametersError } from "../../../../src/domain/@shared/errors/errors"
+import NotificationError from "../../../../src/domain/@shared/notification/notification.error"
 import Address from "../../../../src/domain/customer/entity/address"
 import Customer from "../../../../src/domain/customer/entity/customer"
 import CustomerModel from "../../../../src/infrastructure/customer/repository/sequelize/customer.model"
@@ -86,6 +86,6 @@ describe("test update customer usecase", () => {
     }
     await expect(
       updateCustomerUseCase.execute(updateInput)
-    ).rejects.toThrow(RequiredParametersError)
+    ).rejects.toThrow(NotificationError)
   })
 })

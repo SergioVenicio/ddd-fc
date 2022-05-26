@@ -1,12 +1,15 @@
-import { PriceError, RequiredParametersError } from "../../@shared/errors/errors"
+import Entity from "../../@shared/entity/entity.abstract"
+import { NotificationErrorProps } from "../../@shared/notification/notification"
 import IProduct from "./IProduct"
 
-class Product implements IProduct {
+class Product extends Entity implements IProduct {
   private readonly _id: string
   private _name: string
   private _price: number
 
   constructor(id: string, name: string, price: number) {
+      super()
+
       this._id = String(id)
       this._name = String(name)
       this._price = Number(price)
@@ -28,21 +31,40 @@ class Product implements IProduct {
 
     public changePrice(price: number): void {
       if (price <= 0) {
-        throw new PriceError("Price field must be greter than 0")
+        this.nofitication.addError({
+          message: 'Price field must be greter than 0',
+          context: 'product'
+        })
       }
       this._price = Number(price)
     }
 
     private validate(): void {
       if (!(this?.id)) {
-        throw new RequiredParametersError("Id parameter is required!")
+        this.nofitication.addError({
+          message: 'Id parameter is required!',
+          context: 'product'
+        })
       }
       if (!(this?.name)) {
-        throw new RequiredParametersError("Name parameter is required!")
+        this.nofitication.addError({
+          message: 'Name parameter is required!',
+          context: 'product'
+        })
     }
     if (!(this?.price)) {
-      throw new RequiredParametersError("Price parameter is required!")
+      this.nofitication.addError({
+        message: 'Price parameter is required!',
+        context: 'product'
+      })
     }
+  }
+
+  hasErrors(): boolean {
+    return this.nofitication.messages().length > 0
+  }
+  getErrors(): NotificationErrorProps[] {
+    return this.nofitication.errors
   }
 }
 
